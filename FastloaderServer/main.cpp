@@ -6,11 +6,14 @@
 #include <cppconn/driver.h>
 #include <cppconn/statement.h>
 #include <cppconn/resultset.h>
+#include "SocketServer.h"
+#include <arpa/inet.h>
+
 /*#include <mysql_driver.h>
 #include <mysql_error.h>*/
 int main()
 {
-	sql::Driver     *driver;
+	/*sql::Driver     *driver;
 	sql::Connection    *con;
 	sql::Statement    *stmt;
 	sql::ResultSet     *res;
@@ -34,6 +37,15 @@ int main()
 		std::cout << "id = " << res->getInt("id") << "; ";
 		std::cout << "num = " << res->getInt("num") << ";" << std::endl;
 	}
-	delete con;
+	delete con;*/
+
+	SocketServer server(40125);
+	server.Listen();
+
+	SocketClient *client = server.Accept();
+	
+	std::cout << "ip: " << client->GetAddrStr() << std::endl
+		<< "descriptor: " << client->descriptor << std::endl;
+
     return 0;
 }

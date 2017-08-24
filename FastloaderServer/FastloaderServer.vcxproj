@@ -62,9 +62,13 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="SocketClient.cpp" />
     <ClCompile Include="SocketServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Socket.h" />
+    <ClInclude Include="SocketClient.h" />
     <ClInclude Include="SocketServer.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -1,16 +1,17 @@
 ﻿#pragma once
+#include "SocketClient.h"
+#include "Socket.h"
 
-class SocketServer
+class SocketServer : public Socket
 {
 public:
-	SocketServer(char*);
-private:
 	/**
-	 * \brief Socket Descriptor
-	 */
-	int sd;
-	/**
-	 * \brief Socket Server port
-	 */
-	char *port;
+	* \brief Socket Server port
+	*/
+	int port;
+
+	SocketServer(int);
+
+	void Listen() const;
+	SocketClient* Accept() const;
 };
