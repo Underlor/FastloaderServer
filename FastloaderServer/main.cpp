@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <iostream>
-
+#include <libconfig.h++>
 #include <mysql_connection.h>
 
 #include <cppconn/driver.h>
@@ -8,9 +8,8 @@
 #include <cppconn/resultset.h>
 #include "SocketServer.h"
 #include <arpa/inet.h>
+#include "ConfigReader.h"
 
-/*#include <mysql_driver.h>
-#include <mysql_error.h>*/
 int main()
 {
 	/*sql::Driver     *driver;
@@ -39,13 +38,26 @@ int main()
 	}
 	delete con;*/
 
-	SocketServer server(40125);
-	server.Listen();
 
-	SocketClient *client = server.Accept();
-	
-	std::cout << "ip: " << client->GetAddrStr() << std::endl
-		<< "descriptor: " << client->descriptor << std::endl;
+
+	ConfigReader config;
+	try
+	{
+		std::cout << "Version = " << config.conf()->lookup("v").c_str() << std::endl;
+		
+	}
+	catch (libconfig::SettingNotFoundException e)
+	{
+		std::cout << "ConfigReader ERROR: Can't find the key" << e.getPath() << std::endl;
+		exit(1);
+	}
+	//	SocketServer server(40125);
+//	server.Listen();
+//
+//	SocketClient *client = server.Accept();
+//	
+//	std::cout << "ip: " << client->GetAddrStr() << std::endl
+//		<< "descriptor: " << client->descriptor << std::endl;
 
     return 0;
 }

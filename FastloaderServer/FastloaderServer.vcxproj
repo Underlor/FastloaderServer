@@ -61,23 +61,25 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClCompile Include="ConfigReader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="SocketClient.cpp" />
     <ClCompile Include="SocketServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConfigReader.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="SocketClient.h" />
     <ClInclude Include="SocketServer.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>M:\IncludesCpp\linux;L:\Program Files\MySQL\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>-lmysqlcppconn %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>M:\IncludesCpp\lib;M:\IncludesCpp\linux;L:\Program Files\MySQL\MySQL Connector C++ 1.1.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-lmysqlcppconn -lconfig++ %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalOptions>-lmysqlcppconn %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-lmysqlcppconn -lconfig++ %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

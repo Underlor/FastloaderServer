@@ -10,7 +10,7 @@ public:
 	*/
 	int port;
 
-	SocketServer(int);
+	explicit SocketServer(int);
 
 	void Listen() const;
 	SocketClient* Accept() const;
